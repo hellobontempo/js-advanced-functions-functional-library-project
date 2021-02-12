@@ -16,8 +16,14 @@ const fi = (function() {
       return collection
     },
 
-    map: function() {
-
+    map: function(collection, callback) {
+      const newCollection = []
+      if (!(Array.isArray(collection))){
+        collection = Object.values(collection)}
+      for (let i = 0; i < collection.length; i++){
+          newCollection.push(callback(collection[i]))
+        }
+      return newCollection
     },
 
     reduce: function() {
